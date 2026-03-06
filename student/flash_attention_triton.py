@@ -1,8 +1,5 @@
 """
-flash_attention_triton.py
-
-Part (b) + (c): Triton kernel implementation of FlashAttention-2 forward pass,
-with causal masking support.
+flash_attention_triton.py - FlashAttention-2 forward pass in Triton with causal masking.
 """
 from student.flash_attention_backward import flash_backward
 import torch
@@ -10,9 +7,6 @@ import math
 import triton
 import triton.language as tl
 
-
-
-# ── Triton forward kernel ─────────────────────────────────────────────────────
 
 @triton.jit
 def flash_fwd_kernel(
@@ -30,11 +24,9 @@ def flash_fwd_kernel(
     K_TILE_SIZE: tl.constexpr,
     is_causal:   tl.constexpr,
 ):
-    # ── Which tile / batch element am I? ────────────────────────────────────
     query_tile_index = tl.program_id(0)
     batch_index      = tl.program_id(1)
 
-    # ── Block pointers ───────────────────────────────────────────────────────
     Q_block_ptr = tl.make_block_ptr(
         Q_ptr + batch_index * stride_qb,
         shape=(N_QUERIES, D),
@@ -43,7 +35,6 @@ def flash_fwd_kernel(
         block_shape=(Q_TILE_SIZE, D),
         order=(1, 0),
     )
-
     K_block_ptr = tl.make_block_ptr(
         K_ptr + batch_index * stride_kb,
         shape=(N_KEYS, D),
@@ -52,7 +43,6 @@ def flash_fwd_kernel(
         block_shape=(K_TILE_SIZE, D),
         order=(1, 0),
     )
-
     V_block_ptr = tl.make_block_ptr(
         V_ptr + batch_index * stride_vb,
         shape=(N_KEYS, D),
@@ -61,7 +51,6 @@ def flash_fwd_kernel(
         block_shape=(K_TILE_SIZE, D),
         order=(1, 0),
     )
-
     O_block_ptr = tl.make_block_ptr(
         O_ptr + batch_index * stride_ob,
         shape=(N_QUERIES, D),
@@ -70,7 +59,6 @@ def flash_fwd_kernel(
         block_shape=(Q_TILE_SIZE, D),
         order=(1, 0),
     )
-
     L_block_ptr = tl.make_block_ptr(
         L_ptr + batch_index * stride_lb,
         shape=(N_QUERIES,),
@@ -80,62 +68,42 @@ def flash_fwd_kernel(
         order=(0,),
     )
 
-    # ── Load query tile (stays on chip for the whole inner loop) ─────────────
-    Qi = tl.load(Q_block_ptr)   # (Q_TILE_SIZE, D)
+    Qi = tl.load(Q_block_ptr)
 
-    # ── On-chip accumulators ─────────────────────────────────────────────────
+    # running accumulators for online softmax
     Oi = tl.zeros((Q_TILE_SIZE, D), dtype=tl.float32)
     li = tl.zeros((Q_TILE_SIZE,),   dtype=tl.float32)
     mi = tl.full( (Q_TILE_SIZE,),   float("-inf"), dtype=tl.float32)
 
-    # Query indices for causal masking (global row indices)
-    q_idx = query_tile_index * Q_TILE_SIZE + tl.arange(0, Q_TILE_SIZE)  # (Q_TILE_SIZE,)
+    q_idx = query_tile_index * Q_TILE_SIZE + tl.arange(0, Q_TILE_SIZE)
 
-    # ── Inner loop over key tiles ────────────────────────────────────────────
-    n_key_tiles = tl.cdiv(N_KEYS, K_TILE_SIZE)
+    for j in range(tl.cdiv(N_KEYS, K_TILE_SIZE)):
+        Kj = tl.load(K_block_ptr)
+        Vj = tl.load(V_block_ptr)
 
-    for j in range(n_key_tiles):
-
-        Kj = tl.load(K_block_ptr)   # (K_TILE_SIZE, D)
-        Vj = tl.load(V_block_ptr)   # (K_TILE_SIZE, D)
-
-        # Sij = Qi @ Kj^T * scale  →  (Q_TILE_SIZE, K_TILE_SIZE)
         Sij = tl.dot(Qi.to(tl.float32), tl.trans(Kj).to(tl.float32)) * scale
 
-        # ── Causal mask ──────────────────────────────────────────────────────
         if is_causal:
-            k_idx = j * K_TILE_SIZE + tl.arange(0, K_TILE_SIZE)  # (K_TILE_SIZE,)
-            # mask[i, j] = True when query i should NOT attend to key j
-            causal_mask = q_idx[:, None] < k_idx[None, :]         # (Q_TILE, K_TILE)
+            k_idx = j * K_TILE_SIZE + tl.arange(0, K_TILE_SIZE)
+            causal_mask = q_idx[:, None] < k_idx[None, :]
             Sij = Sij + tl.where(causal_mask, -1e6, 0.0)
 
-        # ── Online softmax update ────────────────────────────────────────────
-        mij_new = tl.maximum(mi, tl.max(Sij, axis=1))             # (Q_TILE_SIZE,)
+        mij_new = tl.maximum(mi, tl.max(Sij, axis=1))
+        Pij     = tl.exp(Sij - mij_new[:, None])
+        rescale = tl.exp(mi - mij_new)
 
-        Pij = tl.exp(Sij - mij_new[:, None])                      # (Q_TILE_SIZE, K_TILE_SIZE)
-
-        rescale = tl.exp(mi - mij_new)                            # (Q_TILE_SIZE,)
         Oi = rescale[:, None] * Oi
-        Oi = tl.dot(Pij.to(Vj.dtype), Vj, acc=Oi.to(Vj.dtype)).to(tl.float32)
+        Oi = tl.dot(Pij.to(Vj.dtype), Vj, acc=Oi).to(tl.float32)
         li = rescale * li + tl.sum(Pij, axis=1)
         mi = mij_new
 
-        # Advance key/value pointers to next tile
         K_block_ptr = K_block_ptr.advance((K_TILE_SIZE, 0))
         V_block_ptr = V_block_ptr.advance((K_TILE_SIZE, 0))
 
-    # ── Normalize and write output ───────────────────────────────────────────
     Oi = Oi / li[:, None]
-
-    # Write O in the original dtype
     tl.store(O_block_ptr, Oi.to(O_block_ptr.type.element_ty))
+    tl.store(L_block_ptr, mi + tl.log(li))
 
-    # L = m + log(l)  (logsumexp)
-    Li = mi + tl.log(li)
-    tl.store(L_block_ptr, Li)
-
-
-# ── autograd.Function wrapper ─────────────────────────────────────────────────
 
 class FlashAttentionTriton(torch.autograd.Function):
 
@@ -144,33 +112,26 @@ class FlashAttentionTriton(torch.autograd.Function):
         B, N_q, d = Q.shape
         _,  N_k, _ = K.shape
 
-        assert Q.is_cuda, "Inputs must be on CUDA"
-        assert Q.is_contiguous() and K.is_contiguous() and V.is_contiguous(), \
-            "Inputs must be contiguous — call .contiguous() before passing in"
+        assert Q.is_cuda
+        assert Q.is_contiguous() and K.is_contiguous() and V.is_contiguous()
 
         Q_TILE_SIZE = 32
         K_TILE_SIZE = 32
 
-        scale = 1.0 / math.sqrt(d)
-
         O = torch.empty_like(Q)
         L = torch.empty((B, N_q), device=Q.device, dtype=torch.float32)
 
-        # Launch grid: (n_query_tiles, batch_size)
-        T_q = math.ceil(N_q / Q_TILE_SIZE)
-        grid = (T_q, B)
+        grid = (math.ceil(N_q / Q_TILE_SIZE), B)
 
         flash_fwd_kernel[grid](
-            Q, K, V,
-            O, L,
+            Q, K, V, O, L,
             Q.stride(0), Q.stride(1), Q.stride(2),
             K.stride(0), K.stride(1), K.stride(2),
             V.stride(0), V.stride(1), V.stride(2),
             O.stride(0), O.stride(1), O.stride(2),
             L.stride(0), L.stride(1),
-            N_QUERIES=N_q,
-            N_KEYS=N_k,
-            scale=scale,
+            N_QUERIES=N_q, N_KEYS=N_k,
+            scale=1.0 / math.sqrt(d),
             D=d,
             Q_TILE_SIZE=Q_TILE_SIZE,
             K_TILE_SIZE=K_TILE_SIZE,
@@ -179,24 +140,18 @@ class FlashAttentionTriton(torch.autograd.Function):
 
         ctx.save_for_backward(Q, K, V, O, L)
         ctx.is_causal = is_causal
-
         return O
 
     @staticmethod
     def backward(ctx, dO):
         Q, K, V, O, L = ctx.saved_tensors
         dQ, dK, dV = flash_backward(Q, K, V, O, dO, L, ctx.is_causal)
-        return dQ, dK, dV, None  # None for is_causal gradient
+        return dQ, dK, dV, None
 
-
-
-# ── Convenience wrapper ───────────────────────────────────────────────────────
 
 def flash_attention_triton(Q, K, V, is_causal=False):
     return FlashAttentionTriton.apply(Q, K, V, is_causal)
 
-
-# ── Quick correctness check ───────────────────────────────────────────────────
 
 def vanilla_attention(Q, K, V, is_causal=False):
     scale = 1.0 / math.sqrt(Q.shape[-1])
@@ -211,19 +166,15 @@ def vanilla_attention(Q, K, V, is_causal=False):
 
 if __name__ == "__main__":
     torch.manual_seed(42)
-    device = "cuda"
-
     B, N, d = 2, 128, 64
-    Q = torch.randn(B, N, d, device=device, dtype=torch.float32).contiguous()
-    K = torch.randn(B, N, d, device=device, dtype=torch.float32).contiguous()
-    V = torch.randn(B, N, d, device=device, dtype=torch.float32).contiguous()
+    Q = torch.randn(B, N, d, device="cuda", dtype=torch.float32).contiguous()
+    K = torch.randn(B, N, d, device="cuda", dtype=torch.float32).contiguous()
+    V = torch.randn(B, N, d, device="cuda", dtype=torch.float32).contiguous()
 
-    # Non-causal
     out_triton  = flash_attention_triton(Q, K, V, is_causal=False)
     out_vanilla = vanilla_attention(Q, K, V, is_causal=False)
     print("Non-causal max diff:", (out_triton - out_vanilla).abs().max().item())
 
-    # Causal
     out_triton_c  = flash_attention_triton(Q, K, V, is_causal=True)
     out_vanilla_c = vanilla_attention(Q, K, V, is_causal=True)
-    print("Causal max diff:    ", (out_triton_c - out_vanilla_c).abs().max().item())
+    print("Causal max diff:    ", (out_triton_c - out_vanilla_c).abs)

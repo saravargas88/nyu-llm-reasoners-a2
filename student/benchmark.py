@@ -15,7 +15,7 @@ from a1_basics.data import get_batch
 from a1_basics.optimizer import AdamW
 
 
-# End-to-end benchmarking of the forward and backward passes of the model
+
 MODEL_SIZES = {
     "small":  dict(d_model=768,  d_ff=3072,  num_layers=12, num_heads=12),
     "medium": dict(d_model=1024, d_ff=4096,  num_layers=24, num_heads=16),
@@ -221,8 +221,7 @@ def benchmark_script(
     fwd_mean, fwd_std = _stats(forward_times)
     bwd_mean, bwd_std = _stats(backward_times)
 
-    
-    
+
 
     return dict(
         num_params_M=nparams / 1e6,

@@ -1,0 +1,59 @@
+\begin{table}[h]
+\centering
+\small
+\caption{FlashAttention-2 (Triton) vs vanilla PyTorch attention, batch=1, causal=True, GPU: NVIDIA A100-SXM4-40GB}
+\label{tab:flash_bench}
+\begin{tabular}{rrrllll}
+\toprule
+seq\_len & $d$ & dtype & impl & fwd (ms) & bwd (ms) & fwd+bwd (ms) \\
+\midrule
+128 & 16 & fp32 & triton & 0.012 & 0.362 & 0.578 \\
+128 & 16 & fp32 & vanilla & 0.046 & 0.204 & 0.510 \\
+[3pt]
+128 & 16 & bf16 & triton & 0.010 & 0.452 & 0.654 \\
+128 & 16 & bf16 & vanilla & 0.041 & 0.212 & 0.530 \\
+[3pt]
+128 & 128 & fp32 & triton & 0.015 & 0.407 & 0.627 \\
+128 & 128 & fp32 & vanilla & 0.041 & 0.193 & 0.496 \\
+[3pt]
+128 & 128 & bf16 & triton & 0.015 & 0.498 & 0.731 \\
+128 & 128 & bf16 & vanilla & 0.040 & 0.222 & 0.534 \\
+[3pt]
+1024 & 16 & fp32 & triton & 0.026 & 0.480 & 0.671 \\
+1024 & 16 & fp32 & vanilla & 0.096 & 0.221 & 0.545 \\
+[3pt]
+1024 & 16 & bf16 & triton & 0.027 & 0.548 & 0.781 \\
+1024 & 16 & bf16 & vanilla & 0.063 & 0.211 & 0.524 \\
+[3pt]
+1024 & 128 & fp32 & triton & 0.058 & 0.454 & 0.671 \\
+1024 & 128 & fp32 & vanilla & 0.107 & 0.212 & 0.523 \\
+[3pt]
+1024 & 128 & bf16 & triton & 0.067 & 0.550 & 0.768 \\
+1024 & 128 & bf16 & vanilla & 0.060 & 0.198 & 0.505 \\
+[3pt]
+8192 & 16 & fp32 & triton & 0.300 & 2.047 & 2.338 \\
+8192 & 16 & fp32 & vanilla & 2.468 & 3.662 & 6.117 \\
+[3pt]
+8192 & 16 & bf16 & triton & 0.295 & 2.053 & 2.343 \\
+8192 & 16 & bf16 & vanilla & 1.521 & 1.757 & 3.259 \\
+[3pt]
+8192 & 128 & fp32 & triton & 1.173 & 5.798 & 6.964 \\
+8192 & 128 & fp32 & vanilla & 3.944 & 6.518 & 10.450 \\
+[3pt]
+8192 & 128 & bf16 & triton & 1.152 & 5.812 & 6.955 \\
+8192 & 128 & bf16 & vanilla & 1.612 & 1.852 & 3.447 \\
+[3pt]
+65536 & 16 & fp32 & triton & OOM & OOM & OOM \\
+65536 & 16 & fp32 & vanilla & OOM & OOM & OOM \\
+[3pt]
+65536 & 16 & bf16 & triton & OOM & OOM & OOM \\
+65536 & 16 & bf16 & vanilla & OOM & OOM & OOM \\
+[3pt]
+65536 & 128 & fp32 & triton & OOM & OOM & OOM \\
+65536 & 128 & fp32 & vanilla & OOM & OOM & OOM \\
+[3pt]
+65536 & 128 & bf16 & triton & OOM & OOM & OOM \\
+65536 & 128 & bf16 & vanilla & OOM & OOM & OOM \\
+\bottomrule
+\end{tabular}
+\end{table}
