@@ -1,0 +1,15 @@
+\begin{table}
+\caption{Transformer benchmarking results}
+\label{tab:benchmarks}
+\begin{tabular}{llrrlll}
+\toprule
+Size & Params (M) & Context len & Warmup steps & Mode & fwd mean (ms) & bwd mean (ms) \\
+\midrule
+small & 129 & 128 & 5 & forward & 37.23 ± 0.56 & 0.00 ± 0.00 \\
+medium & 423 & 128 & 5 & forward & 75.71 ± 1.69 & 0.00 ± 0.00 \\
+large & 969 & 128 & 5 & forward & 111.62 ± 2.01 & 0.00 ± 0.00 \\
+xl & 1998 & 128 & 5 & forward & 150.18 ± 1.51 & 0.00 ± 0.00 \\
+2.7B & 3407 & 128 & 5 & forward & 219.60 ± 0.25 & 0.00 ± 0.00 \\
+\bottomrule
+\end{tabular}
+\end{table}

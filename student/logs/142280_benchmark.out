@@ -1,0 +1,76 @@
+===== Question (b): forward + backward, warmup=5 =====
+
+============================================================
+  small  |  ctx=512  warmup=5  steps=10  mode=forward_backward
+============================================================
+  Params: 128.6M
+  Warmup step 1/5
+  Warmup step 2/5
+  Warmup step 3/5
+  Warmup step 4/5
+  Warmup step 5/5
+  Step  1/10  fwd=46.40 ms  bwd=104.95 ms  total=151.35 ms
+  Step  2/10  fwd=46.52 ms  bwd=105.01 ms  total=151.53 ms
+  Step  3/10  fwd=46.63 ms  bwd=104.91 ms  total=151.54 ms
+  Step  4/10  fwd=46.60 ms  bwd=105.02 ms  total=151.62 ms
+  Step  5/10  fwd=46.56 ms  bwd=104.98 ms  total=151.54 ms
+  Step  6/10  fwd=46.64 ms  bwd=105.08 ms  total=151.72 ms
+  Step  7/10  fwd=46.76 ms  bwd=105.48 ms  total=152.24 ms
+  Step  8/10  fwd=46.59 ms  bwd=105.20 ms  total=151.79 ms
+  Step  9/10  fwd=46.78 ms  bwd=105.03 ms  total=151.81 ms
+  Step 10/10  fwd=46.91 ms  bwd=105.04 ms  total=151.95 ms
+
+   fwd: mean=46.64 ms  std=0.15 ms
+   bwd: mean=105.07 ms  std=0.16 ms
+
+============================================================
+  medium  |  ctx=512  warmup=5  steps=10  mode=forward_backward
+============================================================
+  Params: 423.2M
+  Warmup step 1/5
+  Warmup step 2/5
+  Warmup step 3/5
+  Warmup step 4/5
+  Warmup step 5/5
+  Step  1/10  fwd=137.37 ms  bwd=322.18 ms  total=459.56 ms
+  Step  2/10  fwd=137.33 ms  bwd=322.24 ms  total=459.57 ms
+  Step  3/10  fwd=137.45 ms  bwd=322.54 ms  total=459.99 ms
+  Step  4/10  fwd=137.60 ms  bwd=322.42 ms  total=460.02 ms
+  Step  5/10  fwd=137.45 ms  bwd=322.02 ms  total=459.47 ms
+  Step  6/10  fwd=137.37 ms  bwd=321.77 ms  total=459.14 ms
+  Step  7/10  fwd=137.53 ms  bwd=321.90 ms  total=459.42 ms
+  Step  8/10  fwd=137.45 ms  bwd=321.98 ms  total=459.43 ms
+  Step  9/10  fwd=137.37 ms  bwd=322.31 ms  total=459.68 ms
+  Step 10/10  fwd=137.46 ms  bwd=322.10 ms  total=459.56 ms
+
+   fwd: mean=137.44 ms  std=0.08 ms
+   bwd: mean=322.14 ms  std=0.24 ms
+
+============================================================
+  large  |  ctx=512  warmup=5  steps=10  mode=forward_backward
+============================================================
+  Params: 969.4M
+  Warmup step 1/5
+  Warmup step 2/5
+  Warmup step 3/5
+  Warmup step 4/5
+  Warmup step 5/5
+  Step  1/10  fwd=284.97 ms  bwd=707.30 ms  total=992.26 ms
+  Step  2/10  fwd=284.99 ms  bwd=706.26 ms  total=991.25 ms
+  Step  3/10  fwd=284.84 ms  bwd=707.56 ms  total=992.40 ms
+  Step  4/10  fwd=285.05 ms  bwd=707.45 ms  total=992.50 ms
+  Step  5/10  fwd=284.85 ms  bwd=706.65 ms  total=991.51 ms
+  Step  6/10  fwd=285.36 ms  bwd=706.73 ms  total=992.09 ms
+  Step  7/10  fwd=285.35 ms  bwd=706.97 ms  total=992.32 ms
+  Step  8/10  fwd=285.53 ms  bwd=707.15 ms  total=992.68 ms
+  Step  9/10  fwd=285.71 ms  bwd=706.99 ms  total=992.70 ms
+  Step 10/10  fwd=285.62 ms  bwd=707.01 ms  total=992.63 ms
+
+   fwd: mean=285.23 ms  std=0.33 ms
+   bwd: mean=707.01 ms  std=0.39 ms
+
+============================================================
+  xl  |  ctx=512  warmup=5  steps=10  mode=forward_backward
+============================================================
+  Params: 1998.2M
+  Warmup step 1/5

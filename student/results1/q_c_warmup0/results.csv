@@ -1,0 +1,5 @@
+Size,Params (M),Context len,Warmup steps,Mode,fwd mean (ms),bwd mean (ms)
+small,129,128,0,forward_backward,104.23 ± 204.12,77.45 ± 40.55
+medium,423,128,0,forward_backward,86.83 ± 20.40,129.70 ± 5.75
+large,969,128,0,forward_backward,123.07 ± 16.94,252.70 ± 3.01
+xl,1998,128,0,forward_backward,163.04 ± 14.58,536.29 ± 6.59

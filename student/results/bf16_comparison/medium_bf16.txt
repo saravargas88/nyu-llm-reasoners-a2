@@ -1,0 +1,23 @@
+
+============================================================
+  medium  |  ctx=1024  warmup=5  steps=10  mode=forward_backward
+============================================================
+  Params: 423.2M
+  Warmup step 1/5
+  Warmup step 2/5
+  Warmup step 3/5
+  Warmup step 4/5
+  Warmup step 5/5
+  Step  1/10  fwd=241.81 ms  bwd=279.35 ms  total=521.15 ms
+  Step  2/10  fwd=117.13 ms  bwd=278.81 ms  total=395.94 ms
+  Step  3/10  fwd=117.44 ms  bwd=279.35 ms  total=396.79 ms
+  Step  4/10  fwd=117.27 ms  bwd=279.33 ms  total=396.60 ms
+  Step  5/10  fwd=117.25 ms  bwd=278.75 ms  total=396.01 ms
+  Step  6/10  fwd=117.35 ms  bwd=281.33 ms  total=398.68 ms
+  Step  7/10  fwd=117.32 ms  bwd=279.58 ms  total=396.90 ms
+  Step  8/10  fwd=117.31 ms  bwd=278.59 ms  total=395.91 ms
+  Step  9/10  fwd=117.10 ms  bwd=278.69 ms  total=395.79 ms
+  Step 10/10  fwd=117.16 ms  bwd=279.24 ms  total=396.40 ms
+
+   fwd: mean=129.71 ms  std=39.39 ms
+   bwd: mean=279.30 ms  std=0.79 ms

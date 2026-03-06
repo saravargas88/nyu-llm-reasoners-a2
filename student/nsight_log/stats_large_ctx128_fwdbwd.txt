@@ -1,0 +1,168 @@
+  Params: 969.4M
+  Warmup step 1/2
+  Warmup step 2/2
+  Step  1/3  fwd=148.38 ms  bwd=296.46 ms  total=444.83 ms
+  Step  2/3  fwd=149.52 ms  bwd=299.98 ms  total=449.50 ms
+  Step  3/3  fwd=152.47 ms  bwd=300.25 ms  total=452.72 ms
+Collecting data...
+Generating '/tmp/nsys-report-e98b.qdstrm'
+[1/8] [0%                          ] profile_large_ctx128_fwdbwd.nsys-rep[1/8] [0%                          ] profile_large_ctx128_fwdbwd.nsys-rep[1/8] [13%                         ] profile_large_ctx128_fwdbwd.nsys-rep[1/8] [11%                         ] profile_large_ctx128_fwdbwd.nsys-rep[1/8] [9%                          ] profile_large_ctx128_fwdbwd.nsys-rep[1/8] [8%                          ] profile_large_ctx128_fwdbwd.nsys-rep[1/8] [7%                          ] profile_large_ctx128_fwdbwd.nsys-rep[1/8] [8%                          ] profile_large_ctx128_fwdbwd.nsys-rep[1/8] [9%                          ] profile_large_ctx128_fwdbwd.nsys-rep[1/8] [10%                         ] profile_large_ctx128_fwdbwd.nsys-rep[1/8] [11%                         ] profile_large_ctx128_fwdbwd.nsys-rep[1/8] [12%                         ] profile_large_ctx128_fwdbwd.nsys-rep[1/8] [13%                         ] profile_large_ctx128_fwdbwd.nsys-rep[1/8] [14%                         ] profile_large_ctx128_fwdbwd.nsys-rep[1/8] [==18%                       ] profile_large_ctx128_fwdbwd.nsys-rep[1/8] [==21%                       ] profile_large_ctx128_fwdbwd.nsys-rep[1/8] [====25%                     ] profile_large_ctx128_fwdbwd.nsys-rep[1/8] [=====29%                    ] profile_large_ctx128_fwdbwd.nsys-rep[1/8] [======34%                   ] profile_large_ctx128_fwdbwd.nsys-rep[1/8] [=======38%                  ] profile_large_ctx128_fwdbwd.nsys-rep[1/8] [=========43%                ] profile_large_ctx128_fwdbwd.nsys-rep[1/8] [==========47%               ] profile_large_ctx128_fwdbwd.nsys-rep[1/8] [===========51%              ] profile_large_ctx128_fwdbwd.nsys-rep[1/8] [============56%             ] profile_large_ctx128_fwdbwd.nsys-rep[1/8] [========================100%] profile_large_ctx128_fwdbwd.nsys-rep[1/8] [========================100%] profile_large_ctx128_fwdbwd.nsys-rep
+[2/8] [0%                          ] profile_large_ctx128_fwdbwd.sqlite[2/8] [1%                          ] profile_large_ctx128_fwdbwd.sqlite[2/8] [2%                          ] profile_large_ctx128_fwdbwd.sqlite[2/8] [3%                          ] profile_large_ctx128_fwdbwd.sqlite[2/8] [4%                          ] profile_large_ctx128_fwdbwd.sqlite[2/8] [5%                          ] profile_large_ctx128_fwdbwd.sqlite[2/8] [6%                          ] profile_large_ctx128_fwdbwd.sqlite[2/8] [7%                          ] profile_large_ctx128_fwdbwd.sqlite[2/8] [8%                          ] profile_large_ctx128_fwdbwd.sqlite[2/8] [9%                          ] profile_large_ctx128_fwdbwd.sqlite[2/8] [10%                         ] profile_large_ctx128_fwdbwd.sqlite[2/8] [11%                         ] profile_large_ctx128_fwdbwd.sqlite[2/8] [12%                         ] profile_large_ctx128_fwdbwd.sqlite[2/8] [13%                         ] profile_large_ctx128_fwdbwd.sqlite[2/8] [14%                         ] profile_large_ctx128_fwdbwd.sqlite[2/8] [=15%                        ] profile_large_ctx128_fwdbwd.sqlite[2/8] [=16%                        ] profile_large_ctx128_fwdbwd.sqlite[2/8] [=17%                        ] profile_large_ctx128_fwdbwd.sqlite[2/8] [==18%                       ] profile_large_ctx128_fwdbwd.sqlite[2/8] [==19%                       ] profile_large_ctx128_fwdbwd.sqlite[2/8] [==20%                       ] profile_large_ctx128_fwdbwd.sqlite[2/8] [==21%                       ] profile_large_ctx128_fwdbwd.sqlite[2/8] [===22%                      ] profile_large_ctx128_fwdbwd.sqlite[2/8] [===23%                      ] profile_large_ctx128_fwdbwd.sqlite[2/8] [===24%                      ] profile_large_ctx128_fwdbwd.sqlite[2/8] [====25%                     ] profile_large_ctx128_fwdbwd.sqlite[2/8] [====26%                     ] profile_large_ctx128_fwdbwd.sqlite[2/8] [====27%                     ] profile_large_ctx128_fwdbwd.sqlite[2/8] [====28%                     ] profile_large_ctx128_fwdbwd.sqlite[2/8] [=====29%                    ] profile_large_ctx128_fwdbwd.sqlite[2/8] [=====30%                    ] profile_large_ctx128_fwdbwd.sqlite[2/8] [=====31%                    ] profile_large_ctx128_fwdbwd.sqlite[2/8] [=====32%                    ] profile_large_ctx128_fwdbwd.sqlite[2/8] [======33%                   ] profile_large_ctx128_fwdbwd.sqlite[2/8] [======34%                   ] profile_large_ctx128_fwdbwd.sqlite[2/8] [======35%                   ] profile_large_ctx128_fwdbwd.sqlite[2/8] [=======36%                  ] profile_large_ctx128_fwdbwd.sqlite[2/8] [=======37%                  ] profile_large_ctx128_fwdbwd.sqlite[2/8] [=======38%                  ] profile_large_ctx128_fwdbwd.sqlite[2/8] [=======39%                  ] profile_large_ctx128_fwdbwd.sqlite[2/8] [========40%                 ] profile_large_ctx128_fwdbwd.sqlite[2/8] [========41%                 ] profile_large_ctx128_fwdbwd.sqlite[2/8] [========42%                 ] profile_large_ctx128_fwdbwd.sqlite[2/8] [=========43%                ] profile_large_ctx128_fwdbwd.sqlite[2/8] [=========44%                ] profile_large_ctx128_fwdbwd.sqlite[2/8] [=========45%                ] profile_large_ctx128_fwdbwd.sqlite[2/8] [=========46%                ] profile_large_ctx128_fwdbwd.sqlite[2/8] [==========47%               ] profile_large_ctx128_fwdbwd.sqlite[2/8] [==========48%               ] profile_large_ctx128_fwdbwd.sqlite[2/8] [==========49%               ] profile_large_ctx128_fwdbwd.sqlite[2/8] [===========50%              ] profile_large_ctx128_fwdbwd.sqlite[2/8] [===========51%              ] profile_large_ctx128_fwdbwd.sqlite[2/8] [===========52%              ] profile_large_ctx128_fwdbwd.sqlite[2/8] [===========53%              ] profile_large_ctx128_fwdbwd.sqlite[2/8] [============54%             ] profile_large_ctx128_fwdbwd.sqlite[2/8] [============55%             ] profile_large_ctx128_fwdbwd.sqlite[2/8] [============56%             ] profile_large_ctx128_fwdbwd.sqlite[2/8] [============57%             ] profile_large_ctx128_fwdbwd.sqlite[2/8] [=============58%            ] profile_large_ctx128_fwdbwd.sqlite[2/8] [=============59%            ] profile_large_ctx128_fwdbwd.sqlite[2/8] [=============60%            ] profile_large_ctx128_fwdbwd.sqlite[2/8] [==============61%           ] profile_large_ctx128_fwdbwd.sqlite[2/8] [==============62%           ] profile_large_ctx128_fwdbwd.sqlite[2/8] [==============63%           ] profile_large_ctx128_fwdbwd.sqlite[2/8] [==============64%           ] profile_large_ctx128_fwdbwd.sqlite[2/8] [===============65%          ] profile_large_ctx128_fwdbwd.sqlite[2/8] [===============66%          ] profile_large_ctx128_fwdbwd.sqlite[2/8] [===============67%          ] profile_large_ctx128_fwdbwd.sqlite[2/8] [================68%         ] profile_large_ctx128_fwdbwd.sqlite[2/8] [================69%         ] profile_large_ctx128_fwdbwd.sqlite[2/8] [================70%         ] profile_large_ctx128_fwdbwd.sqlite[2/8] [================71%         ] profile_large_ctx128_fwdbwd.sqlite[2/8] [=================72%        ] profile_large_ctx128_fwdbwd.sqlite[2/8] [=================73%        ] profile_large_ctx128_fwdbwd.sqlite[2/8] [=================74%        ] profile_large_ctx128_fwdbwd.sqlite[2/8] [==================75%       ] profile_large_ctx128_fwdbwd.sqlite[2/8] [==================76%       ] profile_large_ctx128_fwdbwd.sqlite[2/8] [==================77%       ] profile_large_ctx128_fwdbwd.sqlite[2/8] [==================78%       ] profile_large_ctx128_fwdbwd.sqlite[2/8] [===================79%      ] profile_large_ctx128_fwdbwd.sqlite[2/8] [===================80%      ] profile_large_ctx128_fwdbwd.sqlite[2/8] [===================81%      ] profile_large_ctx128_fwdbwd.sqlite[2/8] [===================82%      ] profile_large_ctx128_fwdbwd.sqlite[2/8] [====================83%     ] profile_large_ctx128_fwdbwd.sqlite[2/8] [====================84%     ] profile_large_ctx128_fwdbwd.sqlite[2/8] [====================85%     ] profile_large_ctx128_fwdbwd.sqlite[2/8] [=====================86%    ] profile_large_ctx128_fwdbwd.sqlite[2/8] [=====================87%    ] profile_large_ctx128_fwdbwd.sqlite[2/8] [=====================88%    ] profile_large_ctx128_fwdbwd.sqlite[2/8] [=====================89%    ] profile_large_ctx128_fwdbwd.sqlite[2/8] [======================90%   ] profile_large_ctx128_fwdbwd.sqlite[2/8] [======================91%   ] profile_large_ctx128_fwdbwd.sqlite[2/8] [======================92%   ] profile_large_ctx128_fwdbwd.sqlite[2/8] [=======================93%  ] profile_large_ctx128_fwdbwd.sqlite[2/8] [=======================94%  ] profile_large_ctx128_fwdbwd.sqlite[2/8] [=======================95%  ] profile_large_ctx128_fwdbwd.sqlite[2/8] [=======================96%  ] profile_large_ctx128_fwdbwd.sqlite[2/8] [========================97% ] profile_large_ctx128_fwdbwd.sqlite[2/8] [========================98% ] profile_large_ctx128_fwdbwd.sqlite[2/8] [========================99% ] profile_large_ctx128_fwdbwd.sqlite[2/8] [========================100%] profile_large_ctx128_fwdbwd.sqlite[2/8] [========================100%] profile_large_ctx128_fwdbwd.sqlite
+[3/8] Executing 'nvtx_sum' stats report
+
+ Time (%)  Total Time (ns)  Instances   Avg (ns)     Med (ns)    Min (ns)   Max (ns)   StdDev (ns)   Style               Range            
+ --------  ---------------  ---------  -----------  -----------  ---------  ---------  -----------  -------  -----------------------------
+     79.2       1346333720          5  269266744.0  148733364.0  147166819  750796340  269187440.3  PushPop  :forward pass                
+     10.6        180607658        180    1003375.9     675563.5     608524   51078300    3754785.2  PushPop  :scaled dot product attention
+      5.0         84412841        180     468960.2     281792.0     250538   29694748    2191760.8  PushPop  :computing attention scores  
+      3.3         56311048        180     312839.2     177388.0     155656   20602464    1522358.5  PushPop  :computing softmax           
+      1.9         32981688        180     183231.6     177438.0     159734     680934      40466.8  PushPop  :final matmul                
+
+[4/8] Executing 'osrt_sum' stats report
+
+ Time (%)  Total Time (ns)  Num Calls    Avg (ns)       Med (ns)      Min (ns)     Max (ns)    StdDev (ns)            Name         
+ --------  ---------------  ---------  -------------  -------------  -----------  -----------  ------------  ----------------------
+     27.9      18309865789          1  18309865789.0  18309865789.0  18309865789  18309865789           0.0  pthread_join          
+     27.7      18217980998         12   1518165083.2       699675.0        41000  18202901787  5254329593.6  epoll_wait            
+     15.3      10023016514         21    477286500.7        51674.0         4760  10000118844  2181956963.3  futex                 
+      8.0       5222911843          8    652863980.4    102525167.0      1556303   4582230263  1590682972.8  sem_wait              
+      7.9       5205538274         69     75442583.7    100142788.0         3120    197783005    43285513.4  poll                  
+      6.1       4000186914          2   2000093457.0   2000093457.0        97714   4000089200  2828421104.4  pthread_cond_timedwait
+      4.4       2858969200         12    238247433.3    225443294.0       158603    632983213   167737890.9  pthread_cond_wait     
+      2.0       1316447900       3053       431198.1       508981.0         2620      6947316      356639.4  open64                
+      0.5        310181533       3880        79943.7        17381.5         1047     31682499      585191.9  ioctl                 
+      0.1         84431097      16787         5029.6         4446.0         1657       201002        4758.0  munmap                
+      0.1         49093816      16312         3009.7         2289.0         1702      2018663       16327.6  mmap64                
+      0.0         29542324       2566        11513.0         3784.5         1001       303884       22436.6  read                  
+      0.0         17030698          6      2838449.7      3079737.0         2767      6120753     2476600.0  flock                 
+      0.0          7666799          3      2555599.7        11897.0         4007      7650895     4412657.0  pipe2                 
+      0.0          5550297       2488         2230.8         2122.0         1005        20675         885.1  close                 
+      0.0          5076382          1      5076382.0      5076382.0      5076382      5076382           0.0  nanosleep             
+      0.0          4767331        643         7414.2         7081.0         1167        57374        3219.5  mmap                  
+      0.0          3904783        447         8735.5         1750.0         1001       701523       61480.0  statx                 
+      0.0          1994965         13       153458.8       108850.0        47744       477280      135942.3  pthread_create        
+      0.0          1640754         16       102547.1        52263.0        28298       860788      202933.5  sem_timedwait         
+      0.0          1329589          8       166198.6        13332.5         3204       765007      292370.6  fopen64               
+      0.0           869377         13        66875.2        68825.0        43900        71697        7049.5  sleep                 
+      0.0           664110          1       664110.0       664110.0       664110       664110           0.0  posix_spawnp          
+      0.0           617393         73         8457.4         8728.0         1014        26206        5774.4  pthread_cond_signal   
+      0.0           371880         44         8451.8         4902.5         1558        44746        8782.7  fopen                 
+      0.0           356017         20        17800.8        12091.5         1030        66787       16588.6  fgets                 
+      0.0           308570         34         9075.6         6592.0         3846        62762       10170.2  write                 
+      0.0           103608         16         6475.5         4772.0         1996        20833        4840.7  open                  
+      0.0           101334         41         2471.6         1916.0         1128         9325        1567.1  fclose                
+      0.0            55644         40         1391.1         1119.5         1002         3543         564.6  fcntl                 
+      0.0            35338          2        17669.0        17669.0        13733        21605        5566.3  socket                
+      0.0            33659          1        33659.0        33659.0        33659        33659           0.0  waitpid               
+      0.0            21561          7         3080.1         3437.0         1087         3921        1012.8  pthread_mutex_trylock 
+      0.0            20422          1        20422.0        20422.0        20422        20422           0.0  socketpair            
+      0.0            17288          2         8644.0         8644.0         6437        10851        3121.2  pthread_cond_broadcast
+      0.0            15887          3         5295.7         1332.0         1080        13475        7084.6  fflush                
+      0.0            15596          2         7798.0         7798.0         5199        10397        3675.5  fread                 
+      0.0            13978          1        13978.0        13978.0        13978        13978           0.0  connect               
+      0.0            13684          4         3421.0         3295.5         2011         5082        1379.3  epoll_ctl             
+      0.0            12940          3         4313.3         4533.0         2935         5472        1282.7  mprotect              
+      0.0            10730          3         3576.7         3694.0         3105         3931         425.3  prctl                 
+      0.0             6748          3         2249.3         2280.0         1321         3147         913.4  sigaction             
+      0.0             5871          2         2935.5         2935.5         2541         3330         557.9  fwrite                
+      0.0             3687          1         3687.0         3687.0         3687         3687           0.0  openat64              
+      0.0             3264          1         3264.0         3264.0         3264         3264           0.0  signal                
+      0.0             2821          1         2821.0         2821.0         2821         2821           0.0  bind                  
+      0.0             1535          1         1535.0         1535.0         1535         1535           0.0  fileno                
+      0.0             1318          1         1318.0         1318.0         1318         1318           0.0  listen                
+
+[5/8] Executing 'cuda_api_sum' stats report
+
+ Time (%)  Total Time (ns)  Num Calls  Avg (ns)   Med (ns)   Min (ns)  Max (ns)  StdDev (ns)            Name          
+ --------  ---------------  ---------  ---------  ---------  --------  --------  -----------  ------------------------
+     47.7        843834748        700  1205478.2    19350.5      7559  11021701    2047298.2  cudaMemcpyAsync         
+     41.0        726785201      54595    13312.3     6634.0      4817  63864138     364693.5  cudaLaunchKernel        
+      7.4        130583893        772   169150.1   168598.0      6806   1003742      56382.7  cudaMalloc              
+      1.2         22091122       2885     7657.2     7256.0      3568     36411       3232.4  cudaMemsetAsync         
+      1.0         17936479        328    54684.4    53523.0      7380     91421      29558.5  cudaStreamSynchronize   
+      0.9         15991025          4  3997756.3  4769894.5   1312650   5138586    1800041.5  cuLibraryLoadData       
+      0.4          6378085         14   455577.5   186393.5     12245   1218839     497325.4  cudaDeviceSynchronize   
+      0.1          2625480          2  1312740.0  1312740.0      2325   2623155    1853206.7  cudaFree                
+      0.1          1525250        766     1991.2     1843.0      1104     18589       1569.1  cudaStreamIsCapturing   
+      0.1          1477177          1  1477177.0  1477177.0   1477177   1477177          0.0  cudaGetDeviceProperties 
+      0.1          1183778          1  1183778.0  1183778.0   1183778   1183778          0.0  cudaHostAlloc           
+      0.0           200058        810      247.0      207.5       131      2028        132.7  cuGetProcAddress_v2     
+      0.0            62789         37     1697.0      506.0       468     24634       4054.3  cudaEventCreateWithFlags
+      0.0            14642          2     7321.0     7321.0      2144     12498       7321.4  cudaEventRecord         
+      0.0             7994          3     2664.7     2621.0      2431      2942        258.3  cuInit                  
+      0.0             7213          1     7213.0     7213.0      7213      7213          0.0  cudaEventQuery          
+      0.0             3844          3     1281.3      198.0       177      3469       1894.6  cuModuleGetLoadingMode  
+      0.0             3131          4      782.8      769.0       675       918        102.7  cuLibraryGetKernel      
+      0.0             2214          2     1107.0     1107.0       558      1656        776.4  cudaGetDriverEntryPoint 
+
+[6/8] Executing 'cuda_gpu_kern_sum' stats report
+
+ Time (%)  Total Time (ns)  Instances  Avg (ns)  Med (ns)  Min (ns)  Max (ns)  StdDev (ns)                                                  Name                                                
+ --------  ---------------  ---------  --------  --------  --------  --------  -----------  ----------------------------------------------------------------------------------------------------
+     18.1        294524012       1265  232825.3  132609.0    105504    897187     143667.0  ampere_sgemm_32x128_nt                                                                              
+     13.5        219435002        545  402633.0  378209.0    374689    913699      55124.9  ampere_sgemm_128x64_tn                                                                              
+     11.2        181032554       9965   18166.8    6304.0      1856    119072      24328.6  void at::native::vectorized_elementwise_kernel<(int)4, at::native::CUDAFunctor_add<float>, std::arr…
+     10.7        173340502      10540   16446.0    8640.0      1760     77664      16457.8  void at::native::vectorized_elementwise_kernel<(int)4, at::native::AUnaryFunctor<float, float, floa…
+      8.6        139759463        360  388220.7  374497.0    373473    470754      33073.1  ampere_sgemm_128x32_sliced1x4_nn                                                                    
+      5.0         81104223        720  112644.8  106752.0    105792    139873      11831.1  ampere_sgemm_32x128_tn                                                                              
+      4.8         78311890       3425   22864.8    7168.0      5152    205153      29146.6  void at::native::elementwise_kernel<(int)128, (int)2, void at::native::gpu_kernel_impl_nocast<at::n…
+      4.8         77688280        720  107900.4  104224.0    103392    131681       9071.3  ampere_sgemm_128x32_nn                                                                              
+      4.3         69972308        180  388735.0  374625.0    373953    471201      33644.5  ampere_sgemm_128x64_nn                                                                              
+      2.6         41940096       1635   25651.4    7680.0      2048    119296      28319.5  void at::native::vectorized_elementwise_kernel<(int)4, at::native::BinaryFunctor<float, float, floa…
+      2.0         32491261       2000   16245.6   10176.0      1824     79937      16410.0  void at::native::vectorized_elementwise_kernel<(int)4, void at::native::<unnamed>::pow_tensor_scala…
+      1.9         31189326       2900   10754.9    6016.0      1760     25633       8515.5  void at::native::vectorized_elementwise_kernel<(int)4, at::native::BinaryFunctor<float, float, floa…
+      1.9         30152430       3825    7883.0    4960.0      1568     35712       6962.5  void at::native::vectorized_elementwise_kernel<(int)4, at::native::FillFunctor<float>, std::array<c…
+      1.7         27825071       1635   17018.4    5920.0      1984     78816      17766.3  void at::native::vectorized_elementwise_kernel<(int)4, at::native::sqrt_kernel_cuda(at::TensorItera…
+      1.7         27259511       2000   13629.8    5408.0      1760     77952      16362.6  void at::native::vectorized_elementwise_kernel<(int)4, at::native::CUDAFunctorOnSelf_add<float>, st…
+      1.6         26282628       4340    6055.9    6080.0      4064      9440        977.6  void at::native::elementwise_kernel<(int)128, (int)2, void at::native::gpu_kernel_impl_nocast<at::n…
+      0.7         11401346        360   31670.4   30304.0     29984     39136       3082.8  ampere_sgemm_128x128_nn                                                                             
+      0.7         11140127        360   30944.8   29952.0     29568     37728       2620.0  ampere_sgemm_128x128_nt                                                                             
+      0.5          7657084        720   10634.8    9888.0      7904     14912       1564.4  void at::native::elementwise_kernel<(int)128, (int)2, void at::native::gpu_kernel_impl_nocast<at::n…
+      0.4          7227316        360   20075.9   19392.0     18848     24736       1866.4  ampere_sgemm_128x128_tn                                                                             
+      0.4          7034625        905    7773.1    7520.0      7008     10432        811.8  void at::native::reduce_kernel<(int)512, (int)1, at::native::ReduceOp<float, at::native::func_wrapp…
+      0.4          5945935        365   16290.2   15744.0     15264     20000       1423.8  void at::native::reduce_kernel<(int)128, (int)4, at::native::ReduceOp<float, at::native::func_wrapp…
+      0.3          4471502          5  894300.4  857539.0    853571   1046403      85044.3  ampere_sgemm_32x32_sliced1x4_nn                                                                     
+      0.3          4300715        180   23892.9   23873.0     23136     24768        312.4  void at::native::vectorized_elementwise_kernel<(int)4, at::native::sigmoid_backward_kernel_cuda(at:…
+      0.2          3345261        360    9292.4    8992.0      8512     11424        863.0  void at::native::elementwise_kernel<(int)128, (int)2, void at::native::gpu_kernel_impl_nocast<at::n…
+      0.2          2869961        370    7756.7    7360.0      6880     22944       1834.2  void at::native::reduce_kernel<(int)512, (int)1, at::native::ReduceOp<float, at::native::MeanOps<fl…
+      0.2          2791695        360    7754.7    7456.0      7264      9696        734.5  void at::native::elementwise_kernel<(int)128, (int)2, void at::native::gpu_kernel_impl_nocast<at::n…
+      0.1          2412328        180   13401.8   12704.0     12544     16544       1438.8  void at::native::reduce_kernel<(int)512, (int)1, at::native::ReduceOp<float, at::native::MaxOps<flo…
+      0.1          2114181        365    5792.3    5888.0      4896     13184       1003.6  void at::native::index_elementwise_kernel<(int)128, (int)4, void at::native::gpu_index_kernel<void …
+      0.1          2054374        360    5706.6    5632.0      4768      8160        683.0  void at::native::vectorized_elementwise_kernel<(int)4, at::native::BUnaryFunctor<float, float, floa…
+      0.1          2015683        360    5599.1    5696.0      4544      7808        638.6  void at::native::vectorized_elementwise_kernel<(int)4, at::native::neg_kernel_cuda(at::TensorIterat…
+      0.1          1953480        180   10852.7   10464.0     10368     13280        949.5  void at::native::<unnamed>::CatArrayBatchedCopy<at::native::<unnamed>::OpaqueType<(unsigned int)4>,…
+      0.1          1915815        180   10643.4   10208.0      9792     13440        976.6  void at::native::vectorized_elementwise_kernel<(int)4, at::native::sigmoid_kernel_cuda(at::TensorIt…
+      0.1          1854149        370    5011.2    4672.0      4544     22496       1654.7  void at::native::elementwise_kernel<(int)128, (int)2, void at::native::gpu_kernel_impl_nocast<at::n…
+      0.1          1638982        360    4552.7    4784.0      3840      6208        595.9  void at::native::elementwise_kernel<(int)128, (int)2, void at::native::gpu_kernel_impl_nocast<at::n…
+      0.1          1175010        180    6527.8    6400.0      5952      7968        528.4  void at::native::_scatter_gather_elementwise_kernel<(int)128, (int)4, void at::native::_cuda_scatte…
+      0.1          1171908        180    6510.6    6304.0      6176      7968        545.6  void at::native::<unnamed>::CatArrayBatchedCopy_aligned16_contig<at::native::<unnamed>::OpaqueType<…
+      0.1          1003330        180    5574.1    5280.0      5024      7552        619.4  void at::native::vectorized_elementwise_kernel<(int)4, at::native::exp_kernel_cuda(at::TensorIterat…
+      0.0           740517        365    2028.8    2016.0      1792      2880        195.6  void at::native::vectorized_elementwise_kernel<(int)4, void at::native::<unnamed>::pow_tensor_scala…
+      0.0           736064        365    2016.6    1920.0      1760      2528        223.8  void at::native::vectorized_elementwise_kernel<(int)4, at::native::rsqrt_kernel_cuda(at::TensorIter…
+      0.0           684452        365    1875.2    1760.0      1728      2528        217.4  void <unnamed>::elementwise_kernel_with_index<int, at::native::arange_cuda_out(const c10::Scalar &,…
+      0.0           648099        180    3600.6    3424.0      3360      4416        373.6  void at::native::elementwise_kernel<(int)128, (int)4, void at::native::gpu_kernel_impl_nocast<at::n…
+      0.0            51393          5   10278.6   10176.0     10080     10657        231.6  void <unnamed>::indexing_backward_kernel<float, (int)4>(const long *, const long *, const T1 *, T1 …
+      0.0            45025          5    9005.0    9024.0      8928      9056         48.6  void at_cuda_detail::cub::DeviceRadixSortSingleTileKernel<at_cuda_detail::cub::DeviceRadixSortPolic…
+      0.0            16512          5    3302.4    3296.0      3296      3328         14.3  void at::native::vectorized_elementwise_kernel<(int)4, at::native::BUnaryFunctor<long, long, long, …
+      0.0            12736          5    2547.2    2592.0      2464      2592         62.4  void at::native::vectorized_elementwise_kernel<(int)4, at::native::AUnaryFunctor<long, long, long, …
+      0.0            12448          5    2489.6    2464.0      2464      2560         41.7  void at::native::vectorized_elementwise_kernel<(int)4, at::native::BUnaryFunctor<long, long, long, …
+
+[7/8] Executing 'cuda_gpu_mem_time_sum' stats report
+
+ Time (%)  Total Time (ns)  Count  Avg (ns)   Med (ns)   Min (ns)  Max (ns)  StdDev (ns)            Operation           
+ --------  ---------------  -----  ---------  ---------  --------  --------  -----------  ------------------------------
+     99.3        789779281    330  2393270.5  1242036.0      1632  10837345    2327426.4  [CUDA memcpy Host-to-Device]  
+      0.5          3970289   2885     1376.2     1184.0      1024      2816        363.8  [CUDA memset]                 
+      0.2          1717671    370     4642.4     3552.0      3328     76736       8396.3  [CUDA memcpy Device-to-Device]
+
+[8/8] Executing 'cuda_gpu_mem_size_sum' stats report
+
+ Total (MB)  Count  Avg (MB)  Med (MB)  Min (MB)  Max (MB)  StdDev (MB)            Operation           
+ ----------  -----  --------  --------  --------  --------  -----------  ------------------------------
+   3877.688    330    11.751     6.554     0.004    51.200       11.037  [CUDA memcpy Host-to-Device]  
+   1212.826    370     3.278     2.621     2.621    51.200        5.616  [CUDA memcpy Device-to-Device]
+      2.592   2885     0.001     0.001     0.000     0.002        0.000  [CUDA memset]                 
+
+Generated:
+	/scratch/sv2279/nyu-llm-reasoners-a2/student/nsight_log/profile_large_ctx128_fwdbwd.nsys-rep
+	/scratch/sv2279/nyu-llm-reasoners-a2/student/nsight_log/profile_large_ctx128_fwdbwd.sqlite

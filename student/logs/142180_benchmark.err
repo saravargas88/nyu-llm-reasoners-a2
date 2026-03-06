@@ -1,0 +1,2 @@
+WARNING: While bind mounting '/scratch:/scratch': destination is already in the mount point list
+/bin/bash: line 11: un: command not found

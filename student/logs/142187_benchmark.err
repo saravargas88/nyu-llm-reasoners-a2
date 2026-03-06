@@ -1,0 +1,3 @@
+WARNING: While bind mounting '/scratch:/scratch': destination is already in the mount point list
+error: Failed to generate package metadata for `a1-basics==1.0.3 @ editable+a1-basics`
+  Caused by: Distribution not found at: file:///scratch/sv2279/nyu-llm-reasoners-a2/a1-basics
