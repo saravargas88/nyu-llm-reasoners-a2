@@ -8,7 +8,7 @@ import torch.nn.functional as F
 import itertools
 import math
 
-# ── Attention implementation ──────────────────────────────────────────────────
+
 
 def attention(Q, K, V, mask=None):
     """
@@ -29,10 +29,8 @@ def attention(Q, K, V, mask=None):
     return torch.bmm(attn_weights, V)
 
 
-# ── Benchmarking helpers ──────────────────────────────────────────────────────
-
 def time_passes(fn, n=100):
-    """Warm up then time n passes."""
+    """warm up then time n passes."""
     # Warmup
     for _ in range(3):
         fn()
@@ -54,8 +52,6 @@ def measure_memory_mb():
     torch.cuda.synchronize()
     return torch.cuda.memory_allocated() / 1024**2
 
-
-# ── Main benchmark loop ───────────────────────────────────────────────────────
 
 def run_benchmark():
     assert torch.cuda.is_available(), "CUDA required"
@@ -84,7 +80,7 @@ def run_benchmark():
         torch.cuda.reset_peak_memory_stats()
 
         try:
-            # ── Forward pass timing ──────────────────────────────────────────
+
             Q = torch.randn(BATCH, seq_len, d_model, device=device, dtype=dtype, requires_grad=False)
             K = torch.randn(BATCH, seq_len, d_model, device=device, dtype=dtype, requires_grad=False)
             V = torch.randn(BATCH, seq_len, d_model, device=device, dtype=dtype, requires_grad=False)
@@ -104,18 +100,17 @@ def run_benchmark():
 
             fwd_ms = time_passes(fwd, N_PASSES)
 
-            # ── Memory before backward ───────────────────────────────────────
-            # Do one forward to build graph, measure memory
+
             Q2, K2, V2 = make_inputs()
             out = attention(Q2, K2, V2)
             torch.cuda.synchronize()
             mem_before_bwd_mb = measure_memory_mb()
 
-            # ── Backward pass timing ─────────────────────────────────────────
+
             grad_out = torch.ones_like(out)
 
             def bwd():
-                # We need a fresh graph each time
+                
                 nonlocal Q2, K2, V2, out
                 Q2, K2, V2 = make_inputs()
                 out = attention(Q2, K2, V2)
@@ -141,22 +136,14 @@ def run_benchmark():
     return results
 
 
-# ── Memory accounting helper ──────────────────────────────────────────────────
 
 def memory_accounting(batch=8, seq_len=256, d_model=16, dtype_bytes=4):
-    """
-    Estimate memory for one attention forward pass (no multihead).
-    Follows Assignment-1 Transformer memory equations.
-    """
     B, N, d = batch, seq_len, d_model
 
-    # Q, K, V stored for backward: 3 × B × N × d
+    
     qkv_bytes    = 3 * B * N * d * dtype_bytes
-
-    # Attention scores S = QK^T / sqrt(d): B × N × N
+    
     scores_bytes  = B * N * N * dtype_bytes
-
-    # Softmax output P (same shape as S)
     softmax_bytes = B * N * N * dtype_bytes
 
     total_bytes   = qkv_bytes + scores_bytes + softmax_bytes
