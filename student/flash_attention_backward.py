@@ -1,43 +1,40 @@
-"""
-flash_attention_backward.py
-FlashAttention-2 backward pass in pure PyTorch with torch.compile.
-"""
 
-import torch
-import math
+import torch 
 
+@torch.compile
 
-def _flash_backward_inner(Q, K, V, O, dO, L, is_causal):
-    B, N, d = Q.shape
+def flashbackward(Q, K, V, O, dO, L, is_causal=False):
+    
+    
+    batch_size, n_queries, d = Q.shape
+    b, n_keys, d_ = K.shape
     scale = 1.0 / math.sqrt(d)
 
-    # S = QK^T / sqrt(d)
-    S = torch.bmm(Q.float(), K.float().transpose(-2, -1)) * scale  # (B, N, N)
+    D = (dO * O).sum(dim=-1)  # (batch, n_queries)
 
+    #Eq 13
+    S = torch.einsum('bqd,bkd->bqk', Q.float(), K.float()) * scale
+
+    P = torch.exp(S - L.unsqueeze(-1))  # (batch, n_queries, n_keys)
+    
+    #  causal mask if needed
     if is_causal:
-        mask = torch.triu(torch.ones(N, N, device=Q.device), diagonal=1).bool()
-        S = S.masked_fill(mask.unsqueeze(0), -1e6)
-
-  
-    P = torch.exp(S - L.unsqueeze(-1).float())                     
-    dV = torch.bmm(P.transpose(-2, -1), dO.float())                
-    dP = torch.bmm(dO.float(), V.float().transpose(-2, -1))         
+        q_idx = torch.arange(n_queries, device=Q.device).unsqueeze(1)
+        k_idx = torch.arange(n_keys, device=Q.device).unsqueeze(0)
+        causal_mask = q_idx >= k_idx
+        P = P * causal_mask.unsqueeze(0)
 
     
-    D = (O.float() * dO.float()).sum(dim=-1)                       
+    dV = torch.einsum('bqk,bqd->bkd', P, dO.float())
 
-    
-    dS = P * (dP - D.unsqueeze(-1))                                
+    dP = torch.einsum('bqd,bkd->bqk', dO.float(), V.float())
 
-    if is_causal:
-        dS = dS.masked_fill(mask.unsqueeze(0), 0.0)
 
-   
-    dQ = torch.bmm(dS, K.float()) * scale                          
+    dQ = torch.einsum('bqk,bkd->bqd', dS, K.float()) * scale
 
-    
-    dK = torch.bmm(dS.transpose(-2, -1), Q.float()) * scale         
+    # Eq 19: dK = dS^T Q / sqrt(d)
+    dK = torch.einsum('bqk,bqd->bkd', dS, Q.float()) * scale
 
     return dQ.to(Q.dtype), dK.to(K.dtype), dV.to(V.dtype)
+    
 
-flash_backward = torch.compile(_flash_backward_inner)
